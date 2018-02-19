@@ -1,16 +1,16 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Map from './components/map.js';
-import TextBox from './components/textbox.js';
+import React, {Component} from 'react';
+import { StyleSheet, View } from 'react-native';
+import MapScreen from './screens/mapscreen.js';
+// import InfoScreen from './screens/infoscreen.js';
+import { StackNavigator } from 'react-navigation';
+import SHInfo from './screens/components/infoPages/shinfo.js';
+import LInfo from './screens/components/infoPages/linfo.js';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.appContainer}>
-        <Map />
-        <View style={styles.directionBox}>
-          <TextBox />
-        </View>
+        <MapScreen />
       </View>
     );
   }
@@ -18,9 +18,6 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   appContainer: {
-    flex: 2,
-  },
-  directionBox: {
-    height: 50,
+    flex: 1,
   },
 });
