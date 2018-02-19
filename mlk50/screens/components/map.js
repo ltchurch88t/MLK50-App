@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
   Animated,
   Image,
   Dimensions,
-  Button,
-  Modal,
 } from 'react-native';
-
 import MapView from 'react-native-maps';
-import SHInfo from './infoPages/shinfo.js';
 
 const Images = [
   { uri: 'http://www.onthisveryspot.com/pics/spot_84_347.jpg' },
@@ -311,10 +306,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(130,4,150, 0.5)',
   },
-  modalText: {
-    textAlign: 'center',
-    paddingTop: 40,
-  }
 });
-
-AppRegistry.registerComponent('mapfocus', () => screens);
