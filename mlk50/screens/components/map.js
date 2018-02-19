@@ -44,6 +44,7 @@ export default class screens extends Component {
         title: 'Lorraine Motel',
         description: 'Site of Dr. Martin Luther King\'s assasination',
         image: Images[0],
+        info: 'Test',
       },
       {
         coordinate: {
@@ -53,7 +54,7 @@ export default class screens extends Component {
         title: 'University of Memphis',
         description: 'Home to the Memphis State 8',
         image: Images[1],
-        info: 'LInfo',
+        info: 'Test test',
       },
       {
         coordinate: {
@@ -63,7 +64,7 @@ export default class screens extends Component {
         title: 'Clayborn Temple',
         description: 'Hub for activism',
         image: Images[2],
-        info: 'LInfo',
+        info: 'Test test test',
       },
       {
         coordinate: {
@@ -73,7 +74,7 @@ export default class screens extends Component {
         title: 'Mason Temple',
         description: 'Dr. martin Luther King\'s I\'ve been to the mountaintop speech',
         image: Images[3],
-        info: 'LInfo',
+        info: 'Test test test test',
       },
       {
         coordinate: {
@@ -83,7 +84,7 @@ export default class screens extends Component {
         title: 'Lynching site of Ell Persons',
         description: 'Site of the 1917 lynching of Ell Persons',
         image: Images[4],
-        info: 'LInfo',
+        info: 'Test test test test test',
       },
       {
         coordinate: {
@@ -93,7 +94,7 @@ export default class screens extends Component {
         title: 'People\'s Grocery Historical Marker',
         description: 'Black owned store whose owners were lynched',
         image: Images[5],
-        info: 'LInfo',
+        info: 'Test test test test test test',
       },
       {
         coordinate: {
@@ -103,7 +104,7 @@ export default class screens extends Component {
         title: 'Lemoyne-Owen College',
         description: 'Historically Black College established in 1968',
         image: Images[6],
-        info: 'LInfo',
+        info: 'Test test test test test test test',
       },
       {
         coordinate: {
@@ -113,34 +114,8 @@ export default class screens extends Component {
         title: 'Slave Haven Museum',
         description: 'Underground railroad museum on the Burke Estate',
         image: Images[7],
-        info: 'SHInfo',
+        info: 'Test test test test test test test test',
       }
-    ],
-    descrips: [
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
-      {
-        info: 'Test test test test test test test test',
-      },
     ],
     region: {
       latitude: 35.1582,
@@ -160,13 +135,7 @@ export default class screens extends Component {
     // We should detect when scrolling has stopped then animate
     // We should just debounce the event listener here
     this.animation.addListener(({ value }) => {
-      let index, index2 = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-      if (index2 >= this.state.descrips.length) {
-        index2 = this.state.descrips.length - 1;
-      }
-      if (index2 <= 0) {
-        index2 = 0;
-      }
+      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
       if (index >= this.state.markers.length) {
         index = this.state.markers.length - 1;
       }
@@ -176,10 +145,6 @@ export default class screens extends Component {
 
       clearTimeout(this.regionTimeout);
       this.regionTimeout = setTimeout(() => {
-        // if (this.index2 !== index2) {
-        //   this.index2 = index2;
-        //   const { info } = this.state.descrips[index2];
-        // }
         if (this.index !== index) {
           this.index = index;
           const { coordinate } = this.state.markers[index];
@@ -195,11 +160,6 @@ export default class screens extends Component {
       }, 10);
     });
   }
-
-  _togglePage(visible) {
-    this.setState({pageVisible:visible});
-  }
-
   render() {
     const interpolations = this.state.markers.map((marker, index) => {
       const inputRange = [
@@ -277,13 +237,6 @@ export default class screens extends Component {
               />
               <View style={styles.textContent}>
                 <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
-                <Modal style={styles.cardDescription} visible={this.state.pageVisible} onRequestClose={() => {this._togglePage(false)}}>
-                  {this.state.descrips.map((descrip, index2) => (
-                   <Text>{descrip.info}</Text>
-                  ))}
-                  <Button title='Close' onPress={() => {this._togglePage(false)}} />
-                </Modal>
-                <Button title='Info' onPress={() => {this._togglePage(true)}}>Text</Button>
               </View>
             </View>
           ))}
