@@ -127,8 +127,8 @@ export default class screens extends Component {
     this.animation = new Animated.Value(0);
   }
   componentDidMount() {
-    // We should detect when scrolling has stopped then animate
-    // We should just debounce the event listener here
+    //detect when scrolling has stopped then animate
+    //debounce the event listener here
     this.animation.addListener(({ value }) => {
       let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
       if (index >= this.state.markers.length) {
@@ -244,6 +244,7 @@ export default class screens extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderRadius: 25,
   },
   scrollView: {
     position: 'absolute',
@@ -295,15 +296,15 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: 'rgba(130,4,150, 0.9)',
+    backgroundColor: 'rgba(191,13,13, 0.9)',
   },
   ring: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: 'rgba(130,4,150, 0.3)',
+    backgroundColor: 'rgba(191,13,13, 0.3)',
     position: 'absolute',
     borderWidth: 1,
-    borderColor: 'rgba(130,4,150, 0.5)',
+    borderColor: 'rgba(191,13,13, 0.5)',
   },
 });
